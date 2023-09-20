@@ -26,6 +26,9 @@ class mailboxManager(object):
         except FileNotFoundError:
             pass
 
+        except EOFError:
+            pass
+
     def _mail_format_valid(self, mail_entry):
         """
         Summary: Checker for if the mail contains the required fields
