@@ -63,6 +63,7 @@ class mailboxManager(object):
         with open(MAIL_DB_FILE, 'wb') as f:
             print('updating database')
             # TODO: save the mailbox data as a pickle file
+            pickle.dump(self.mailbox, f)
 
     def add_mail(self, mail_entry):
         """
