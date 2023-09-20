@@ -61,7 +61,24 @@ def get_mailbox_callback():
 # Your implementation should handle reasonable error cases as well, such as an
 # incorrect password.
 
-#def search_mailbox_callback():
+@app.route('/mailbox/search', methods=['GET'])
+def search_mailbox_callback():
+    # Extract key/value field for  password, search file, and text
+    password = request.args.get('password')
+    field = request.args.get('field')
+    text = request.args.get('text')
+
+    if password == mailbox_password:
+        # Use Flask's jsonify function to format the dictionary as JSON
+        response = jsonify(mailbox_manager.get_mail(field, text))
+    else:
+        if password == None:
+            response = jsonify({'Response': 'Missing password'})
+        else:
+            response = jsonify({'Response': 'Password does not match'})
+    
+    # The object returned will be sent back as an HTTP message to the requester
+    return response
 
 
 @app.route('/mailbox/delete', methods=['DELETE'])
