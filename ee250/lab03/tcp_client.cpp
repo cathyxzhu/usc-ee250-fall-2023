@@ -10,6 +10,12 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+void error(char *msg)
+{
+  perror(msg);
+  exit(0);
+}
+
 int main(int argc, char const *argv[]) 
 { 
 	// check to see if user input is valid
@@ -17,7 +23,7 @@ int main(int argc, char const *argv[])
 	
 	// TODO: Fill out the server ip and port
 	std::string server_ip = "";
-	std::string server_port = "";
+	std::string server_port = "8080";
 
 	int opt = 1;
 	int client_fd = -1;
@@ -45,6 +51,7 @@ int main(int argc, char const *argv[])
 
 	// TODO: Connect() to the aws server (hint: you'll need to use server_addr)
 
+
 	// TODO: Retreive user input
 
 	// TODO: Send() the user input to the aws server
@@ -55,6 +62,6 @@ int main(int argc, char const *argv[])
 	printf("%s\n", socket_read_buffer);
 	
 	// TODO: Close() the socket
-
+	close(sockfd);
 	return 0; 
 } 
