@@ -26,7 +26,7 @@ while True:
     # For 5s, read  output of light sensor in 100 ms intervals
     # Print the raw value along with the text “bright” or “dark”
     for i in range(0,50):
-        light = mcp.read_adc(1)
+        light = mcp.read_adc(0)
         if light<100:
             brightness = "dark"
         else:
@@ -43,7 +43,7 @@ while True:
     # For 5s, read  output of sound sensor in 100 ms intervals
     # Turn LED on for 100s if sound sensor is tapped
     for i in range(0,50):
-        sound = mcp.read_adc(2)
+        sound = mcp.read_adc(1)
         print (sound)
         if sound>500:
             GPIO.output(11, 1)
